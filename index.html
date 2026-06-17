@@ -3,93 +3,203 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portal Professor Moreira</title>
+
+<title>Professor Moreira Mobile</title>
 
 <style>
-body{
+
+*{
     margin:0;
-    font-family:Arial, sans-serif;
-    background:#eef3f8;
-    text-align:center;
+    padding:0;
+    box-sizing:border-box;
 }
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#eef3f8;
+}
+
+/* TELA DE BLOQUEIO */
+
 #bloqueio{
     position:fixed;
     inset:0;
-    background:linear-gradient(180deg,#0d47a1,#06306d);
-    color:white;
-    z-index:9999;
+    background:linear-gradient(180deg,#0d47a1,#06275c);
     display:flex;
     align-items:center;
     justify-content:center;
-    padding:25px;
+    padding:20px;
+    z-index:9999;
 }
+
 .caixa{
     background:white;
-    color:#111;
-    max-width:420px;
     width:100%;
-    padding:25px;
-    border-radius:18px;
+    max-width:430px;
+    padding:30px;
+    border-radius:24px;
+    box-shadow:0 15px 40px rgba(0,0,0,.25);
 }
+
+.icone{
+    width:80px;
+    height:80px;
+    margin:auto;
+    border-radius:50%;
+    background:#0d47a1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:40px;
+    color:white;
+}
+
 .caixa h1{
+    text-align:center;
     color:#0d47a1;
-    font-size:26px;
+    margin-top:15px;
+    margin-bottom:10px;
+    font-size:32px;
+}
+
+.subtitulo{
+    text-align:center;
+    color:#555;
+    margin-bottom:25px;
+    font-size:17px;
+}
+
+label{
+    display:block;
+    color:#0d47a1;
+    font-weight:bold;
+    margin-bottom:6px;
+    margin-top:15px;
+}
+
 input{
     width:100%;
-    box-sizing:border-box;
-    padding:14px;
-    margin:10px 0;
+    padding:15px;
+    border-radius:12px;
+    border:2px solid #d6e0f5;
     font-size:17px;
-    border-radius:10px;
-    border:2px solid #0d47a1;
 }
-button,.botao{
-    display:block;
+
+input:focus{
+    outline:none;
+    border-color:#0d47a1;
+}
+
+button{
     width:100%;
-    background:#0d47a1;
+    margin-top:25px;
+    background:#25D366;
     color:white;
-    text-decoration:none;
-    padding:18px;
-    margin:14px 0;
-    border-radius:14px;
-    font-size:20px;
-    font-weight:bold;
     border:none;
+    padding:18px;
+    border-radius:15px;
+    font-size:19px;
+    font-weight:bold;
+    cursor:pointer;
 }
+
+button:hover{
+    opacity:.95;
+}
+
+.aviso{
+    margin-top:20px;
+    background:#eef5ff;
+    padding:12px;
+    border-radius:10px;
+    text-align:center;
+    font-size:13px;
+    color:#444;
+}
+
+/* CONTEÚDO */
+
 .header{
     background:#0d47a1;
     color:white;
-    padding:25px 15px;
+    text-align:center;
+    padding:25px;
 }
+
+.header h1{
+    font-size:32px;
+}
+
 .container{
-    max-width:430px;
+    max-width:500px;
     margin:auto;
     padding:25px;
 }
-.footer{
-    margin-top:25px;
-    font-size:14px;
-    color:#555;
+
+.botao{
+    display:block;
+    text-decoration:none;
+    background:#0d47a1;
+    color:white;
+    padding:18px;
+    margin-bottom:15px;
+    border-radius:14px;
+    font-size:20px;
+    font-weight:bold;
+    text-align:center;
 }
+
+.botao:hover{
+    background:#0a3980;
+}
+
+.footer{
+    margin-top:30px;
+    text-align:center;
+    color:#555;
+    font-size:15px;
+    line-height:1.7;
+}
+
 </style>
 </head>
 
 <body>
 
 <div id="bloqueio">
+
     <div class="caixa">
+
+        <div class="icone">🎓</div>
+
         <h1>Professor Moreira Mobile</h1>
-        <p>Digite seus dados para liberar o acesso.</p>
 
-        <input type="text" id="nome" placeholder="Digite seu nome completo">
-        <input type="tel" id="telefone" placeholder="Digite seu WhatsApp">
-
-        <button onclick="liberar()">Liberar acesso pelo WhatsApp</button>
-
-        <p style="font-size:13px;color:#555;">
-            O acesso será liberado após o envio da mensagem.
+        <p class="subtitulo">
+            Digite seus dados para liberar o acesso.
         </p>
+
+        <label>Nome completo</label>
+        <input
+            type="text"
+            id="nome"
+            placeholder="Digite seu nome completo">
+
+        <label>WhatsApp</label>
+        <input
+            type="tel"
+            id="telefone"
+            placeholder="Digite seu WhatsApp">
+
+        <button onclick="liberar()">
+            📲 Liberar acesso pelo WhatsApp
+        </button>
+
+        <div class="aviso">
+            🔒 O acesso será liberado após o envio da mensagem.
+        </div>
+
     </div>
+
 </div>
 
 <div class="header">
@@ -99,52 +209,114 @@ button,.botao{
 
 <div class="container">
 
-    <a class="botao" href="QUESTÕES1.html">📘 Questões 1</a>
-    <a class="botao" href="QUESTÕES2.html">📘 Questões 2</a>
-    <a class="botao" href="QUESTÕES3.html">📘 Questões 3</a>
-    <a class="botao" href="QUESTÕES4.html">📘 Questões 4</a>
-    <a class="botao" href="QUESTÕES5.html">📘 Questões 5</a>
-    <a class="botao" href="QUESTÕES6.html">📘 Questões 6</a>
+    <a class="botao" href="QUESTÕES1.html">
+        📘 Questões 1
+    </a>
+
+    <a class="botao" href="QUESTÕES2.html">
+        📘 Questões 2
+    </a>
+
+    <a class="botao" href="QUESTÕES3.html">
+        📘 Questões 3
+    </a>
+
+    <a class="botao" href="QUESTÕES4.html">
+        📘 Questões 4
+    </a>
+
+    <a class="botao" href="QUESTÕES5.html">
+        📘 Questões 5
+    </a>
+
+    <a class="botao" href="QUESTÕES6.html">
+        📘 Questões 6
+    </a>
 
     <div class="footer">
         Curso de Contabilidade<br>
         Professor Moreira<br>
-        WhatsApp: 61 98532-3574
+        WhatsApp: (61) 98532-3574
     </div>
 
 </div>
 
 <script>
+
 function liberar(){
-    const nome = document.getElementById("nome").value.trim();
-    const telefone = document.getElementById("telefone").value.trim();
+
+    const nome =
+        document.getElementById("nome")
+        .value.trim();
+
+    const telefone =
+        document.getElementById("telefone")
+        .value.trim();
 
     if(nome === "" || telefone === ""){
-        alert("Digite seu nome e WhatsApp para liberar o acesso.");
+
+        alert(
+            "Digite seu nome e WhatsApp para liberar o acesso."
+        );
+
         return;
     }
 
-    const numeroProfessor = "5561985323574";
-    const mensagem = encodeURIComponent(
-        "Olá, Professor Moreira! Meu nome é " + nome +
-        ". Meu WhatsApp é " + telefone +
+    const numeroProfessor =
+        "5561985323574";
+
+    const mensagem =
+        encodeURIComponent(
+        "Olá, Professor Moreira! Meu nome é "
+        + nome +
+        ". Meu WhatsApp é "
+        + telefone +
         ". Vou iniciar o material de questões."
+        );
+
+    localStorage.setItem(
+        "acessoProfessorMoreira",
+        "liberado"
     );
 
-    localStorage.setItem("acessoProfessorMoreira", "liberado");
-    localStorage.setItem("nomeAluno", nome);
-    localStorage.setItem("telefoneAluno", telefone);
+    localStorage.setItem(
+        "nomeAluno",
+        nome
+    );
 
-    window.open("https://wa.me/" + numeroProfessor + "?text=" + mensagem, "_blank");
+    localStorage.setItem(
+        "telefoneAluno",
+        telefone
+    );
 
-    document.getElementById("bloqueio").style.display = "none";
+    window.open(
+        "https://wa.me/" +
+        numeroProfessor +
+        "?text=" +
+        mensagem,
+        "_blank"
+    );
+
+    document.getElementById(
+        "bloqueio"
+    ).style.display = "none";
 }
 
 window.onload = function(){
-    if(localStorage.getItem("acessoProfessorMoreira") === "liberado"){
-        document.getElementById("bloqueio").style.display = "none";
+
+    if(
+        localStorage.getItem(
+            "acessoProfessorMoreira"
+        ) === "liberado"
+    ){
+
+        document.getElementById(
+            "bloqueio"
+        ).style.display = "none";
     }
+
 }
+
 </script>
 
 </body>
