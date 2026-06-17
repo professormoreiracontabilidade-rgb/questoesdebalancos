@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portal Professor Moreira</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#eef3f8;
+    text-align:center;
+}
+#bloqueio{
+    position:fixed;
+    inset:0;
+    background:linear-gradient(180deg,#0d47a1,#06306d);
+    color:white;
+    z-index:9999;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:25px;
+}
+.caixa{
+    background:white;
+    color:#111;
+    max-width:420px;
+    width:100%;
+    padding:25px;
+    border-radius:18px;
+}
+.caixa h1{
+    color:#0d47a1;
+    font-size:26px;
+}
+input{
+    width:100%;
+    padding:15px;
+    margin:10px 0;
+    font-size:18px;
+    border-radius:10px;
+    border:2px solid #0d47a1;
+}
+button,.botao{
+    display:block;
+    width:100%;
+    background:#0d47a1;
+    color:white;
+    text-decoration:none;
+    padding:18px;
+    margin:14px 0;
+    border-radius:14px;
+    font-size:20px;
+    font-weight:bold;
+    border:none;
+}
+.header{
+    background:#0d47a1;
+    color:white;
+    padding:25px 15px;
+}
+.container{
+    max-width:430px;
+    margin:auto;
+    padding:25px;
+}
+.footer{
+    margin-top:25px;
+    font-size:14px;
+    color:#555;
+}
+</style>
+</head>
+
+<body>
+
+<div id="bloqueio">
+    <div class="caixa">
+        <h1>Professor Moreira Mobile</h1>
+        <p>Digite seus dados para liberar o acesso.</p>
+
+        <input type="text" id="nome" placeholder="Digite seu nome completo">
+        <input type="tel" id="telefone" placeholder="Digite seu WhatsApp">
+
+        <button onclick="liberar()">Liberar acesso pelo WhatsApp</button>
+
+        <p style="font-size:13px;color:#555;">
+            O acesso será liberado após o envio da mensagem.
+        </p>
+    </div>
+</div>
+
+<div class="header">
+    <h1>Questões</h1>
+    <p>Professor Moreira Mobile</p>
+</div>
+
+<div class="container">
+
+    <a class="botao" href="QUESTÕES1.html">📘 Questões 1</a>
+    <a class="botao" href="QUESTÕES2.html">📘 Questões 2</a>
+    <a class="botao" href="QUESTÕES3.html">📘 Questões 3</a>
+    <a class="botao" href="QUESTÕES4.html">📘 Questões 4</a>
+    <a class="botao" href="QUESTÕES5.html">📘 Questões 5</a>
+    <a class="botao" href="QUESTÕES6.html">📘 Questões 6</a>
+
+    <div class="footer">
+        Curso de Contabilidade<br>
+        Professor Moreira<br>
+        WhatsApp: 61 98532-3574
+    </div>
+
+</div>
+
+<script>
+function liberar(){
+    const nome = document.getElementById("nome").value.trim();
+    const telefone = document.getElementById("telefone").value.trim();
+
+    if(nome === "" || telefone === ""){
+        alert("Digite seu nome e WhatsApp para liberar o acesso.");
+        return;
+    }
+
+    const numeroProfessor = "5561985323574";
+    const mensagem = encodeURIComponent(
+        "Olá, Professor Moreira! Meu nome é " + nome +
+        ". Meu WhatsApp é " + telefone +
+        ". Vou iniciar o material de questões."
+    );
+
+    localStorage.setItem("acessoProfessorMoreira", "liberado");
+    localStorage.setItem("nomeAluno", nome);
+    localStorage.setItem("telefoneAluno", telefone);
+
+    window.open("https://wa.me/" + numeroProfessor + "?text=" + mensagem, "_blank");
+
+    document.getElementById("bloqueio").style.display = "none";
+}
+
+window.onload = function(){
+    if(localStorage.getItem("acessoProfessorMoreira") === "liberado"){
+        document.getElementById("bloqueio").style.display = "none";
+    }
+}
+</script>
+
+</body>
+</html>
